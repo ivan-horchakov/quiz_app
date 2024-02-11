@@ -15,14 +15,18 @@ class AnswerButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+          foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          foregroundColor: Colors.cyan,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+          fixedSize: const Size(30, 60),
+          side: const BorderSide(width: 5),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40))),
       child: Text(
         answerText,
         textAlign: TextAlign.center,
+        style: const TextStyle(
+            color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
       ),
     );
   }
