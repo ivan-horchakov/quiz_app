@@ -21,20 +21,26 @@ class StartScreen extends StatelessWidget {
           Text(
             "So you think you're smart?!",
             style: GoogleFonts.lato(
-                color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 63),
           FilledButton(
             onPressed: startQuiz,
             style: OutlinedButton.styleFrom(
-                backgroundColor: Colors.white, foregroundColor: Colors.black),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+            ),
             child: const Text(
               'Yes, I am!',
               style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(
@@ -45,9 +51,11 @@ class StartScreen extends StatelessWidget {
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
             child: const Text(
               "No, I'm not...",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -56,13 +56,16 @@ class ResultsScreen extends StatelessWidget {
             FilledButton(
               onPressed: onRestart,
               style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.white, foregroundColor: Colors.black),
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.black,
+              ),
               child: const Text(
                 'Let me try again',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(
@@ -75,7 +78,7 @@ class ResultsScreen extends StatelessWidget {
                 "Nope, I'm done",
                 style: TextStyle(color: Colors.white),
               ),
-            )
+            ),
           ],
         ),
       ),

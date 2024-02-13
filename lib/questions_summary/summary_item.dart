@@ -10,40 +10,46 @@ class SummaryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isCorrectAnswer =
         itemData['user_answer'] == itemData['correct_answer'];
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      QuestionIdentifier(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        QuestionIdentifier(
           isCorrectAnswer: isCorrectAnswer,
-          questionIndex: itemData['question_index'] as int),
-      const SizedBox(
-        width: 15,
-      ),
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              itemData['question'] as String,
-              style: const TextStyle(color: Colors.white, fontSize: 15),
-            ),
-            const SizedBox(
-              height: 3,
-            ),
-            Text(
-              itemData['user_answer'] as String,
-              style: TextStyle(
-                color: isCorrectAnswer ? Colors.green : Colors.red,
-              ),
-            ),
-            Text(
-              itemData['correct_answer'].toString(),
-              style: const TextStyle(color: Colors.green),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-          ],
+          questionIndex: itemData['question_index'] as int,
         ),
-      ),
-    ]);
+        const SizedBox(
+          width: 15,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                itemData['question'] as String,
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+              Text(
+                itemData['correct_answer'].toString(),
+                style: const TextStyle(color: Colors.green),
+              ),
+              if (!isCorrectAnswer) ...[
+                Text(
+                  itemData['user_answer'] as String,
+                  style: const TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+              const SizedBox(
+                height: 12,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
