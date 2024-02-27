@@ -1,12 +1,8 @@
-# quiz_app
+# Quiz Flutter App.
 
-Flutter Quiz App.
+This app was built during passing the [Section 3](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37131048#overview) of the "Flutter & Dart - The Complete Guide [2024 Edition.]" course.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+A few useful resources:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
