@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/questions_summary/question_identifier.dart';
+import 'package:quiz_app/widgets/questions_summary/question_identifier.dart';
 
 class SummaryItem extends StatelessWidget {
   const SummaryItem(this.itemData, {super.key});
@@ -8,8 +8,9 @@ class SummaryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isCorrectAnswer =
-        itemData['user_answer'] == itemData['correct_answer'];
+    final bool isCorrectAnswer = itemData['user_answer'] == itemData['correct_answer'];
+    const double textScaler = 1.0;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,9 +18,7 @@ class SummaryItem extends StatelessWidget {
           isCorrectAnswer: isCorrectAnswer,
           questionIndex: itemData['question_index'] as int,
         ),
-        const SizedBox(
-          width: 15,
-        ),
+        const SizedBox(width: 15),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,6 +26,7 @@ class SummaryItem extends StatelessWidget {
               Text(
                 itemData['question'] as String,
                 style: const TextStyle(color: Colors.white, fontSize: 15),
+                textScaler: const TextScaler.linear(textScaler),
               ),
               const SizedBox(
                 height: 3,
@@ -34,6 +34,7 @@ class SummaryItem extends StatelessWidget {
               Text(
                 itemData['correct_answer'].toString(),
                 style: const TextStyle(color: Colors.green),
+                textScaler: const TextScaler.linear(textScaler),
               ),
               if (!isCorrectAnswer) ...[
                 Text(
@@ -41,11 +42,10 @@ class SummaryItem extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.red,
                   ),
+                  textScaler: const TextScaler.linear(textScaler),
                 ),
               ],
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
             ],
           ),
         ),

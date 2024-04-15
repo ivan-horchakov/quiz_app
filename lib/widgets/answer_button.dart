@@ -12,6 +12,8 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double textScaler = 0.6;
+
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
@@ -27,9 +29,10 @@ class AnswerButton extends StatelessWidget {
         textAlign: TextAlign.center,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 15,
+          fontSize: 21,
           fontWeight: FontWeight.bold,
         ),
+        textScaler: const TextScaler.linear(textScaler),
       ),
     );
   }

@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/questions_screen.dart';
-import 'package:quiz_app/results_screen.dart';
-import 'package:quiz_app/start_screen.dart';
+import 'package:quiz_app/pages/questions_page.dart';
+import 'package:quiz_app/pages/results_page.dart';
+import 'package:quiz_app/pages/start_page.dart';
 
-class Quiz extends StatefulWidget {
-  const Quiz({super.key});
+class QuizApp extends StatefulWidget {
+  const QuizApp({super.key});
 
   @override
-  State<Quiz> createState() {
+  State<QuizApp> createState() {
     return _QuizState();
   }
 }
 
-class _QuizState extends State<Quiz> {
+class _QuizState extends State<QuizApp> {
   List<String> selectedAnswers = [];
-  var activeScreen = 'start-screen';
+  var activeScreen = 'start-page';
 
   void switchScreen() {
     setState(() {
-      activeScreen = 'questiond-screen';
+      activeScreen = 'questions-page';
     });
   }
 
@@ -27,7 +27,7 @@ class _QuizState extends State<Quiz> {
     selectedAnswers.add(answer);
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        activeScreen = 'results-screen';
+        activeScreen = 'results-page';
       });
     }
   }
@@ -35,28 +35,29 @@ class _QuizState extends State<Quiz> {
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
-      activeScreen = 'questiond-screen';
+      activeScreen = 'questions-page';
     });
   }
 
   @override
   Widget build(context) {
-    Widget screenWidget = StartScreen(switchScreen);
+    Widget screenWidget = StartPage(switchScreen);
 
-    if (activeScreen == 'questiond-screen') {
-      screenWidget = QuestionsScreen(
+    if (activeScreen == 'questions-page') {
+      screenWidget = QuestionsPage(
         onSelectAnswer: chooseAnswer,
       );
     }
 
-    if (activeScreen == 'results-screen') {
-      screenWidget = ResultsScreen(
+    if (activeScreen == 'results-page') {
+      screenWidget = ResultsPage(
         chosenAnswers: selectedAnswers,
         onRestart: restartQuiz,
       );
     }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(color: Colors.black),

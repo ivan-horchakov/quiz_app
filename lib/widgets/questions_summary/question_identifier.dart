@@ -13,6 +13,8 @@ class QuestionIdentifier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final questionNumber = questionIndex + 1;
+    const double textScaler = 1.0;
+
     return Container(
       alignment: Alignment.center,
       width: 40,
@@ -28,6 +30,7 @@ class QuestionIdentifier extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
+        textScaler: const TextScaler.linear(textScaler),
       ),
     );
   }

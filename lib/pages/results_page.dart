@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quiz_app/data/questions.dart';
-import 'package:quiz_app/questions_summary/questions_summary.dart';
+import 'package:quiz_app/widgets/questions_summary/questions_summary.dart';
 
-class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({
+class ResultsPage extends StatelessWidget {
+  const ResultsPage({
     super.key,
     required this.chosenAnswers,
     required this.onRestart,
@@ -29,30 +29,29 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numTolalQuestions = questions.length;
+    final numTotalQuestions = questions.length;
     final numCorrectQuestion = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
     }).length;
+    const double textScaler = 0.8;
 
     return SizedBox(
       width: double.infinity,
       child: Container(
-        margin: const EdgeInsets.all(40),
+        margin: const EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 30),
             Text(
-              'You ansvered $numCorrectQuestion out of $numTolalQuestions questions correctly!',
+              'You answered $numCorrectQuestion out of $numTotalQuestions questions correctly!',
               style: const TextStyle(color: Colors.white, fontSize: 27),
               textAlign: TextAlign.center,
+              textScaler: const TextScaler.linear(textScaler),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 21),
             QuestionsSummary(summaryData),
-            const SizedBox(
-              height: 29,
-            ),
+            const SizedBox(height: 18),
             FilledButton(
               onPressed: onRestart,
               style: OutlinedButton.styleFrom(
@@ -66,17 +65,16 @@ class ResultsScreen extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
+                textScaler: TextScaler.linear(textScaler),
               ),
             ),
-            const SizedBox(
-              height: 18,
-            ),
+            const SizedBox(height: 9),
             OutlinedButton(
-              onPressed: () =>
-                  SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+              onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
               child: const Text(
-                "Nope, I'm done",
+                "I'm done...",
                 style: TextStyle(color: Colors.white),
+                textScaler: TextScaler.linear(textScaler),
               ),
             ),
           ],
