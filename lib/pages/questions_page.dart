@@ -29,39 +29,39 @@ class _QuestionsScreenState extends State<QuestionsPage> {
 
   @override
   Widget build(context) {
-    const double textScaler = 0.9;
+    const double textScaler = 1.0;
 
     final currentQuestion = questions[currentQuestionIndex];
 
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        margin: const EdgeInsets.all(40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              currentQuestion.text,
-              style: GoogleFonts.lato(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-              textScaler: const TextScaler.linear(textScaler),
+    return Container(
+      margin: const EdgeInsets.all(30),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Spacer(flex: 6),
+          Text(
+            currentQuestion.text,
+            style: GoogleFonts.lato(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 40),
-            ...currentQuestion.shuffledAnswers.map((answer) {
-              return AnswerButton(
-                answerText: answer,
-                onTap: () {
-                  answerQuestion(answer);
-                },
-              );
-            }),
-          ],
-        ),
+            textAlign: TextAlign.center,
+            textScaler: const TextScaler.linear(textScaler),
+          ),
+          // const SizedBox(height: 40),
+          const Spacer(flex: 1),
+          ...currentQuestion.shuffledAnswers.map((answer) {
+            return AnswerButton(
+              answerText: answer,
+              onTap: () {
+                answerQuestion(answer);
+              },
+            );
+          }),
+          const Spacer(flex: 6),
+        ],
       ),
     );
   }

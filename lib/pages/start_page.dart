@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StartPage extends StatelessWidget {
@@ -9,18 +8,14 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
     const double textScaler = 1.0;
 
     return Center(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            'assets/images/quiz-logo.png',
-            width: screenWidth - 100,
-          ),
-          const SizedBox(height: 50),
+          const Spacer(flex: 6),
+          Image.asset('assets/images/quiz-logo.png'),
+          const Spacer(flex: 3),
           Text(
             "So you think you're smart?!",
             style: GoogleFonts.lato(
@@ -31,7 +26,7 @@ class StartPage extends StatelessWidget {
             textAlign: TextAlign.center,
             textScaler: const TextScaler.linear(textScaler),
           ),
-          const SizedBox(height: 63),
+          const Spacer(flex: 3),
           FilledButton(
             onPressed: startQuiz,
             style: OutlinedButton.styleFrom(
@@ -48,17 +43,7 @@ class StartPage extends StatelessWidget {
               textScaler: TextScaler.linear(textScaler),
             ),
           ),
-          const SizedBox(height: 18),
-          OutlinedButton(
-            onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
-            child: const Text(
-              "No, I'm not...",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              textScaler: TextScaler.linear(textScaler),
-            ),
-          ),
+          const Spacer(flex: 6),
         ],
       ),
     );

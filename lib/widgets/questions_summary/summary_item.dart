@@ -18,8 +18,9 @@ class SummaryItem extends StatelessWidget {
           isCorrectAnswer: isCorrectAnswer,
           questionIndex: itemData['question_index'] as int,
         ),
-        const SizedBox(width: 15),
+        const Spacer(flex: 1),
         Expanded(
+          flex: 12,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -27,9 +28,6 @@ class SummaryItem extends StatelessWidget {
                 itemData['question'] as String,
                 style: const TextStyle(color: Colors.white, fontSize: 15),
                 textScaler: const TextScaler.linear(textScaler),
-              ),
-              const SizedBox(
-                height: 3,
               ),
               Text(
                 itemData['correct_answer'].toString(),
@@ -45,7 +43,6 @@ class SummaryItem extends StatelessWidget {
                   textScaler: const TextScaler.linear(textScaler),
                 ),
               ],
-              const SizedBox(height: 12),
             ],
           ),
         ),
